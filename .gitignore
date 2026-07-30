@@ -1,0 +1,24 @@
+# OpenCode local state — never commit these.
+# auth.json holds provider credentials.
+.opencode/auth.json
+.opencode/cache/
+.opencode/logs/
+
+# Environment / secrets
+.env
+.env.local
+*.key
+
+# Jekyll build output (GitHub builds this server-side)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp

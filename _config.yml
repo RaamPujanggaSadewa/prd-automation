@@ -1,0 +1,21 @@
+# GitHub Pages config.
+# Source: Deploy from a branch → main → / (root)
+# README.md becomes the site homepage.
+
+title: PRD Automation
+description: A UI/UX designer's workflow for writing PRDs with AI, using OpenCode CLI and Claude Haiku.
+theme: jekyll-theme-primer
+
+# Apply the theme layout to every page so the markdown files
+# stay clean (no YAML front matter needed in each one).
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Keep these out of the published site.
+exclude:
+  - LICENSE
+  - .gitignore
+  - templates/opencode.json
