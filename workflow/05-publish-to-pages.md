@@ -113,4 +113,4 @@ The reason to make the workflow reusable is that a method other people can run i
 
 ---
 
-**Back to [the workflow index](README.md)** · **See [the result](../case-study/)**
+**Back to [the workflow index](README.md)** · **See [the result](../case-study/README.md)**

@@ -9,7 +9,7 @@
 
 > Delete this blockquote before publishing.
 >
-> Sections marked **AI-drafted** are filled by the [prompt library](../prompts/) and then reviewed by hand. Sections marked **Write yourself** should be in your own words — they carry your point of view and a model can only restate what you already told it.
+> Sections marked **AI-drafted** are filled by the [prompt library](../prompts/README.md) and then reviewed by hand. Sections marked **Write yourself** should be in your own words — they carry your point of view and a model can only restate what you already told it.
 >
 > `[NEEDS DATA]` marks anything requiring a figure or fact you don't have. Leaving these visible in a published PRD is a feature, not an omission — it shows the boundary of what you actually know.
 

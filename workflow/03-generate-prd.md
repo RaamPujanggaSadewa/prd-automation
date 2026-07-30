@@ -32,7 +32,7 @@ The cost of six prompts over one is about ten minutes. It's the best trade in th
 
 ## The sequence
 
-Run these from the repo root. Full text of each is in [`prompts/`](../prompts/) — copy it, or reference the file directly as shown.
+Run these from the repo root. Full text of each is in [`prompts/`](../prompts/README.md) — copy it, or reference the file directly as shown.
 
 ### 01 — Teardown
 

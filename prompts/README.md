@@ -21,7 +21,7 @@ Six prompts, run in order. Each builds on what the last one produced.
 opencode run -c "$(cat prompts/04-requirements.md)"
 ```
 
-All the explanation lives in this README and in the [workflow pages](../workflow/). If you edit a prompt, keep the convention — an added note like "*remember to check this section carefully*" becomes an instruction to the model, and models act on instructions.
+All the explanation lives in this README and in the [workflow pages](../workflow/README.md). If you edit a prompt, keep the convention — an added note like "*remember to check this section carefully*" becomes an instruction to the model, and models act on instructions.
 
 ---
 

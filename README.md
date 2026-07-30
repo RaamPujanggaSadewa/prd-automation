@@ -10,9 +10,9 @@ This repo is three things:
 
 | | |
 |---|---|
-| **[The workflow](workflow/)** | Five steps, start to finish. What I run, in what order, and why. |
-| **[The result](case-study/)** | A complete PRD produced by this workflow, published and readable. |
-| **[The toolkit](prompts/)** | Every prompt and template, ready to fork and use on your own project. |
+| **[The workflow](workflow/README.md)** | Five steps, start to finish. What I run, in what order, and why. |
+| **[The result](case-study/README.md)** | A complete PRD produced by this workflow, published and readable. |
+| **[The toolkit](prompts/README.md)** | Every prompt and template, ready to fork and use on your own project. |
 
 ---
 
@@ -52,7 +52,7 @@ So the workflow inverts the usual split:
   5. PUBLISH        Commit via CLI → GitHub Pages → shareable link
 ```
 
-Full detail in **[workflow/](workflow/)**. Each step is its own page with the exact commands.
+Full detail in **[workflow/](workflow/README.md)**. Each step is its own page with the exact commands.
 
 ### Why these tools
 

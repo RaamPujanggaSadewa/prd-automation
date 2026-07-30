@@ -6,6 +6,15 @@ title: PRD Automation
 description: A UI/UX designer's workflow for writing PRDs with AI, using OpenCode CLI and Claude Haiku.
 theme: jekyll-theme-primer
 
+# Both are GitHub Pages built-in plugins, enabled by default. Declared
+# explicitly so the behaviour is visible rather than implicit:
+#   relative-links  rewrites links to .md files into their published URLs,
+#                   so the same links work on github.com and on Pages
+#   readme-index    serves each folder's README.md as that folder's index
+plugins:
+  - jekyll-relative-links
+  - jekyll-readme-index
+
 # Apply the theme layout to every page so the markdown files
 # stay clean (no YAML front matter needed in each one).
 defaults:

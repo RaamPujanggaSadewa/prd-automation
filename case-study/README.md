@@ -1,6 +1,6 @@
 # The Case Study
 
-**Status: not yet written.** This is the slot for the worked example — a complete PRD produced by running [the workflow](../workflow/) end to end.
+**Status: not yet written.** This is the slot for the worked example — a complete PRD produced by running [the workflow](../workflow/README.md) end to end.
 
 The workflow and toolkit in this repo are finished and usable without it. But this page is the one that proves the method produces something worth reading, so it's the one to fill next.
 
