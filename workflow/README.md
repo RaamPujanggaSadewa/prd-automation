@@ -1,42 +1,24 @@
 # The Workflow
 
-Five steps, in order. Each page has the exact commands and the reasoning behind them.
+Five steps. This is the actual process I use at work, not a generic "AI writes your PRD" pipeline — the AI shows up in step 4, once there's real context to give it.
 
 | Step | What happens | AI involved? |
 |---|---|---|
-| **[01 — Setup](01-setup-opencode.md)** | Install OpenCode, pick the model, write the project rules | Setup only |
-| **[02 — Design inputs](02-design-inputs.md)** | Heuristic teardown → design brief | **No** — this is designer work |
-| **[03 — Generate](03-generate-prd.md)** | Six sequential prompts build the PRD section by section | Yes |
-| **[04 — Critique](04-critique-and-refine.md)** | Adversarial pass; the model attacks its own draft | Yes |
-| **[05 — Publish](05-publish-to-pages.md)** | Commit, push, enable GitHub Pages, share | Commit via CLI |
+| **[01 — Setup](01-setup-opencode.md)** | Install OpenCode, pick a model, write the project rules | Setup only |
+| **[02 — Requirement gathering](02-requirement-gathering.md)** | Sit with whoever asked for this — CEO, sales, ops — and get the real context | **No** |
+| **[03 — Design & context](03-design-and-context.md)** | Design in Figma; build a folder showing current vs. new, with the reasoning | Only if the design needs a starting point |
+| **[04 — Generate the PRD](04-generate-prd.md)** | Hand the AI the context folder and a template; it drafts, I edit | Yes |
+| **[05 — Publish](05-publish-to-pages.md)** | Commit, push, enable GitHub Pages, share | No |
 
-## How long it takes
+## Steps 3 and 4 aren't strictly sequential
 
-Rough timings from my own runs, for a single-feature PRD:
+Design and PRD writing happen alternately, not one after the other. I'll draft part of the PRD, realize a requirement doesn't make sense until I've settled a design decision, go back into Figma, then return to the PRD with that decision made. The numbering here is for reference, not a strict order to follow top to bottom.
 
-| Step | Time |
-|---|---|
-| 01 — Setup | ~10 min, once ever |
-| 02 — Design inputs | **2–4 hours** |
-| 03 — Generate | 20–30 min |
-| 04 — Critique | 30–45 min |
-| 05 — Publish | ~5 min |
+## Why this order
 
-Look at the shape of that table. Step 2 — the step with no AI in it — takes longer than everything else combined.
+The AI only enters at step 4, and by then there's real material to give it: what the stakeholder actually asked for, what the product looks like today, what it looks like after the change, and why. That context is what makes step 4 fast — the AI isn't guessing at a product it's never seen, it's reading two versions side by side and drafting from the difference.
 
-That's not a flaw in the workflow. That *is* the workflow. The AI compresses the writing, not the thinking. If your step 2 takes twenty minutes, your PRD will read like it.
-
-## Two rules I follow
-
-**1. One section at a time.** I never ask for a whole PRD in one prompt. Six focused prompts, each reading the file the previous one wrote. Each output is small enough that I can actually check it, and any mistake is contained to one section instead of smeared through the whole document.
-
-**2. Every claim is traceable.** If the draft asserts something — a user behaviour, a business impact, a technical constraint — I can point to where in my brief it came from. When I can't, that line comes out. This is the single habit that separates a real PRD from a plausible-sounding one, and no prompt can do it for you.
-
-## A caveat worth stating
-
-This workflow is good at turning evidence into a well-structured document. It is not a substitute for research, and it won't tell you whether your idea is any good. A confidently-written PRD built on a weak premise is more dangerous than a messy one, because the polish hides the weakness.
-
-Do the research. Then use this to write it up.
+Skip straight to step 4 without steps 2 and 3 and you get the same problem any AI-first PRD has: a document with nothing behind it.
 
 ---
 

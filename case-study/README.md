@@ -6,9 +6,15 @@ The workflow and toolkit in this repo are finished and usable without it. But th
 
 ---
 
+## The one adjustment for a public case study
+
+At work, [step 02](../workflow/02-requirement-gathering.md) is a real conversation with whoever actually asked for the work. For a case study on someone else's public product, there's no real stakeholder in the room — so that step becomes a stated, honest simulation: write the requirement notes as if a specific person had asked for this, name the premise clearly in the PRD, and don't present it as a real conversation that didn't happen. Everything after that step runs exactly as documented.
+
+---
+
 ## Candidate subjects
 
-The app to redesign hasn't been chosen yet. Options, with the trade-offs:
+Not chosen yet. Options, with the trade-offs:
 
 | Subject | Why it works | The catch |
 |---|---|---|
@@ -25,22 +31,25 @@ The pick matters less than the scope. **One flow.** Onboarding, or search, or th
 
 ```
 case-study/
-├── README.md          Overview: what, why, what came out of it
-├── design-brief.md    The filled-in brief (step 02)
-├── PRD.md             The finished PRD
-└── screens/           Annotated screenshots
+├── README.md              Overview: what, why, what came out of it
+├── requirement-notes.md   The simulated stakeholder ask (step 02)
+├── context/
+│   ├── current/            Screenshots + notes on the product as it stands
+│   └── new/                 Screenshots + notes on the proposed change
+├── PRD.md                  The finished PRD
 ```
 
-Publish the brief alongside the PRD. Showing the input is what makes the output credible — otherwise a reader has to take on faith that the evidence existed.
+Publish the requirement notes and context folder alongside the PRD. Showing the input is what makes the output credible — otherwise a reader has to take on faith that the reasoning was there.
 
 ---
 
 ## How to fill it
 
 1. Pick a subject and one flow within it.
-2. Run [step 02](../workflow/02-design-inputs.md) — the teardown and brief. This is the 2–4 hour part.
-3. Run [steps 03–04](../workflow/03-generate-prd.md) to generate and critique.
-4. Drop the files in here and rewrite this page as the overview.
+2. Write the simulated requirement notes ([step 02](../workflow/02-requirement-gathering.md)).
+3. Design in Figma and build the current-vs-new context folder ([step 03](../workflow/03-design-and-context.md)).
+4. Generate and refine the PRD ([step 04](../workflow/04-generate-prd.md)).
+5. Drop the files in here and rewrite this page as the overview.
 
 ---
 

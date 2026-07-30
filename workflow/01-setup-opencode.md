@@ -1,6 +1,6 @@
 # 01 — Setup
 
-Goal: a terminal AI agent that can read and write files in your PRD repo, running Claude Haiku 4.5.
+Goal: a terminal AI agent that can read and write files in your PRD repo.
 
 One-time. About ten minutes.
 
@@ -38,44 +38,36 @@ opencode providers login
 
 This opens an interactive picker. `opencode auth login` is an alias for the same thing, if that's the muscle memory you already have.
 
-There are two routes to Haiku, and they use **different model strings**. This trips people up, so check which one you're on:
+See what you actually have access to:
 
 ```bash
 opencode providers list
+opencode models
 ```
-
-| If you see | Your model string is |
-|---|---|
-| **OpenCode Zen** | `opencode/claude-haiku-4-5` |
-| **Anthropic** | `anthropic/claude-haiku-4-5` |
-
-Both run the same underlying model. OpenCode Zen is a hosted gateway — one login, no separate API key to manage. The Anthropic route uses your own key from [console.anthropic.com](https://console.anthropic.com) and bills you directly.
-
-Confirm what's actually available to you:
-
-```bash
-opencode models | grep haiku
-```
-
-Whatever that prints is the string to use everywhere below. The examples in this repo use the OpenCode Zen form.
 
 ---
 
-## Why Haiku 4.5
+## About the model — pick whatever you actually have
 
-| | Claude Haiku 4.5 |
-|---|---|
-| Model string | `claude-haiku-4-5` |
-| Context window | 200K tokens |
-| Cost | $1 / $5 per million tokens (in / out) |
+**Use whatever model your setup gives you access to.** I use Claude Haiku because that's what my company provides on our OpenCode account — not because it's the strongest model available. Nothing in this workflow needs a frontier model; the reasoning happens in steps 2 and 3, which are entirely human, done before the AI is ever opened. What the model does in step 4 is draft against context I've already assembled, which a mid-tier model handles fine.
 
-A 200K context window holds a design brief, a full PRD draft, and a conversation about it several times over. For this workload that's ample.
+If your company gives you a specific model, use that. If you're paying out of pocket, pick on cost. Don't treat the model choice in this repo as a recommendation — it's just what I run.
 
-The reason to pick the small model is that **the reasoning in this workflow is mine, not the model's.** Steps 2 and 4 are where the thinking happens, and both are human-driven. What I need from the model is structuring, consistency, and drafting from evidence I hand it. Haiku does that well, returns fast enough that iterating feels like editing rather than waiting, and costs so little that a complete PRD lands in the tens-of-cents range.
+**OpenCode also includes free models you can use with no separate provider account** — anything in `opencode models` ending in `-free`:
 
-Reaching for a frontier model here would be paying a premium for judgment I'm not delegating.
+```bash
+opencode models | grep free
+```
 
-If you want to swap it, change one line in `opencode.json` — nothing else in the workflow depends on the model choice.
+There's a real downside: free-tier models are typically rate-limited and less capable than a paid model from the same family, and quality on longer or more technical PRD sections can be noticeably worse. Fine for trying the workflow out or for a low-stakes document; I wouldn't rely on one for anything going to a stakeholder without reading it closely.
+
+Whatever you land on, confirm the exact string before continuing:
+
+```bash
+opencode models
+```
+
+That string is what goes in `opencode.json` below.
 
 ---
 
@@ -92,7 +84,7 @@ Two files at the root of your PRD repo.
 }
 ```
 
-Copy from [`templates/opencode.json`](../templates/opencode.json). Swap the model string if `opencode models` told you something different.
+Copy from [`templates/opencode.json`](../templates/opencode.json), then replace the model string with whatever `opencode models` showed you.
 
 ### `AGENTS.md`
 
@@ -100,24 +92,23 @@ OpenCode reads this automatically at the start of every session and treats it as
 
 Copy [`templates/AGENTS.md`](../templates/AGENTS.md). The rules that matter most:
 
-- **Never invent evidence.** No user numbers, research findings, or business metrics that aren't in the brief. Flag gaps as `[NEEDS DATA]` instead of filling them.
-- **Edit the file, don't reprint it.** Modify `PRD.md` in place. Don't dump the whole document into the chat.
-- **One section per request.** Don't run ahead into sections I haven't asked for.
+- **Never invent evidence.** No user numbers, research findings, or business metrics that aren't in the context I've given it. Flag gaps instead of filling them.
+- **Edit the file, don't reprint it.** Modify `PRD.md` in place.
 - **Plain language.** No "leverage", "synergy", "seamless", "delight".
 
-That first rule is the one doing the real work. Without it, a model asked for a PRD will happily produce `"users abandon at 34%"` because PRDs contain numbers like that. The number is fabricated and it looks exactly like a real one.
+That first rule is the one doing the real work. Without it, a model asked for a PRD will happily produce `"users abandon at 34%"` because PRDs contain numbers like that, and the number is fabricated but looks exactly like a real one.
 
 ---
 
 ## Two ways to run it
 
-**Interactive** — a TUI session, best for step 4 where you're going back and forth:
+**Interactive** — a TUI session, good when you're going back and forth with it on a section:
 
 ```bash
 opencode
 ```
 
-**One-shot** — best for step 3, where each prompt is a discrete job:
+**One-shot** — good for a single, well-defined request:
 
 ```bash
 opencode run "your prompt here"
@@ -132,10 +123,10 @@ Useful flags:
 | `-f, --file` | Attach a file to the message |
 | `--session` | Resume a specific session by ID |
 
-Attaching a file is how the design brief gets in:
+Attaching a file is how context gets in — this is how the current-vs-new folder from [step 03](03-design-and-context.md) reaches the model in [step 04](04-generate-prd.md):
 
 ```bash
-opencode run -f design-brief.md "Read the attached brief and summarise the three problems it identifies. Don't write anything to disk yet."
+opencode run -f context/current/notes.md -f context/new/notes.md "Read both attached files and summarise what changed between the two versions. Don't write anything to disk yet."
 ```
 
 If that comes back with an accurate summary and no invented detail, your setup is working.
@@ -148,4 +139,4 @@ OpenCode stores provider credentials in `auth.json`. The [`.gitignore`](../.giti
 
 ---
 
-**Next → [02 — Design inputs](02-design-inputs.md)**
+**Next → [02 — Requirement gathering](02-requirement-gathering.md)**

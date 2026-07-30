@@ -52,7 +52,7 @@ First build takes a minute or two. Your site lands at:
 https://<username>.github.io/<repo-name>/
 ```
 
-`README.md` becomes the homepage. Every other markdown file is served at its path — `workflow/03-generate-prd.md` → `/workflow/03-generate-prd`. Relative links between files keep working.
+`README.md` becomes the homepage. Every other markdown file is served at its path — `workflow/04-generate-prd.md` → `/workflow/04-generate-prd`. Relative links between files keep working.
 
 ### Why deploy-from-branch and not Actions
 

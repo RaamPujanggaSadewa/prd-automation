@@ -1,18 +1,18 @@
 # PRD Automation
 
-**A UI/UX designer's workflow for writing product requirement documents with AI — from design artifacts to a published, readable PRD.**
+**A UI/UX designer's workflow for writing product requirement documents with AI — from a stakeholder conversation to a published, readable PRD.**
 
-I'm a designer, not a PM. But I kept hitting the same wall: I'd finish a flow, understand exactly what was broken and why, and then have to hand that understanding to someone else to translate into a spec. Something always got lost in the handoff.
+I'm a designer, not a PM. But I kept hitting the same wall: I'd sit with whoever needed something built, understand exactly what they were asking for and why, design the fix — and then have to hand that understanding to someone else to translate into a spec. Something always got lost in the handoff.
 
-So I built a workflow that lets me write the PRD myself — where my design work *is* the input, and AI does the structuring instead of the thinking.
+So I built a workflow that lets me write the PRD myself — where the conversation and the design *are* the input, and AI does the drafting once there's real material to draft from.
 
 This repo is three things:
 
 | | |
 |---|---|
-| **[The workflow](workflow/README.md)** | Five steps, start to finish. What I run, in what order, and why. |
+| **[The workflow](workflow/README.md)** | Five steps, start to finish. What I actually do, in what order. |
 | **[The result](case-study/README.md)** | A complete PRD produced by this workflow, published and readable. |
-| **[The toolkit](prompts/README.md)** | Every prompt and template, ready to fork and use on your own project. |
+| **[The toolkit](prompts/README.md)** | The prompt and templates, ready to fork and use on your own project. |
 
 ---
 
@@ -22,43 +22,42 @@ Most "AI writes your PRD" demos are one prompt: *"Write a PRD for a food deliver
 
 The problem isn't the model. It's that the prompt contains no evidence.
 
-A designer already has the evidence — flows, screens, heuristic findings, the specific reason step 3 loses people. That material is the difference between a document that describes a product and one that argues for a change.
+By the time I open the AI, I've already sat with the person who asked for this, designed the change, and put together a folder showing the product before and after with my own notes on why. That's what turns a generic draft into a document that argues for a specific change — not a better prompt, more evidence.
 
-So the workflow inverts the usual split:
+So the workflow puts the AI at the end, not the start:
 
 | I own | The AI owns |
 |---|---|
-| The problem — what's broken, for whom | Structure and sectioning |
-| The evidence — screens, flows, teardown notes | Turning findings into requirements |
-| The design decisions and their rationale | Drafting acceptance criteria |
-| Scope calls — what's in, what's out | Consistency and cross-referencing |
-| Final judgment on every claim | Catching gaps I missed |
+| The stakeholder conversation — what was actually asked for | Drafting from the context I hand it |
+| The design work in Figma | Structuring the PRD against a template |
+| The before/after evidence and why it changed | Turning that evidence into requirements and acceptance criteria |
+| Every judgment call — priority, scope, trade-offs | Catching gaps I missed |
 
-**I bring the argument. The AI builds the document around it.** Nothing in the output is a claim I haven't made myself.
+**I bring the conversation and the design. The AI drafts the document around them.** Nothing in the output is a claim I haven't made myself.
 
 ---
 
 ## The workflow at a glance
 
 ```
-  1. SETUP          OpenCode CLI + Claude Haiku 4.5 + project rules
+  1. SETUP        OpenCode CLI + whatever model I actually have access to
         ↓
-  2. DESIGN INPUTS  Heuristic teardown → design brief  (designer work, no AI)
+  2. REQUIREMENTS  Sit with the stakeholder — CEO, sales, ops — get the real ask  (no AI)
         ↓
-  3. GENERATE       Six sequential prompts, each building on the last
+  3. DESIGN & CONTEXT  Design in Figma, alternating with building a current-vs-new folder
         ↓
-  4. CRITIQUE       Adversarial pass — the model attacks its own draft
+  4. GENERATE      Hand the AI the context folder + a template, review, refine
         ↓
-  5. PUBLISH        Commit via CLI → GitHub Pages → shareable link
+  5. PUBLISH       Commit via CLI → GitHub Pages → shareable link
 ```
 
-Full detail in **[workflow/](workflow/README.md)**. Each step is its own page with the exact commands.
+Full detail in **[the workflow](workflow/README.md)**. Steps 3 and 4 aren't strictly sequential — design and PRD writing go back and forth.
 
 ### Why these tools
 
-**[OpenCode CLI](https://opencode.ai)** — an open-source terminal AI agent. It reads and writes files in the repo directly, so the PRD is a real file under version control from the first draft. Every revision is a commit. No copy-pasting out of a chat window, no "which version is current".
+**[OpenCode CLI](https://opencode.ai)** — an open-source terminal AI agent. It reads and writes files in the repo directly, so the PRD is a real file under version control from the first draft. Every revision is a commit.
 
-**Claude Haiku 4.5** — the small, fast, cheap model in the Claude family ($1 / $5 per million tokens in, out). Deliberate choice: this workflow doesn't need a frontier model, because the reasoning is mine. Haiku's job is structuring, consistency, and drafting from evidence I supply. It's fast enough that iterating feels like editing rather than waiting, and cheap enough that a full PRD costs pocket change.
+**Whatever model I have access to.** In this repo that's Claude Haiku — because it's what my company provides on our OpenCode account, not because it's the strongest model out there. The reasoning in this workflow happens in steps 2 and 3, entirely by hand, before the AI is ever opened. What the model does in step 4 is draft against context that's already been assembled, and a mid-tier model handles that fine. If you're on a different model — including one of OpenCode's free options — see [workflow/01](workflow/01-setup-opencode.md) for the trade-offs.
 
 **GitHub Pages** — the PRD is markdown in a repo, so publishing it as a readable web page is a settings toggle, not a deployment.
 
@@ -66,7 +65,7 @@ Full detail in **[workflow/](workflow/README.md)**. Each step is its own page wi
 
 ## Use this yourself
 
-No install, no account, no dependency on my setup. The templates are plain markdown and the prompts are plain text — they work in OpenCode, Claude Code, ChatGPT, Gemini, or a Notion AI block.
+No install, no account, no dependency on my setup. The templates are plain markdown — they work in OpenCode, Claude Code, ChatGPT, Gemini, or a Notion AI block.
 
 ```bash
 git clone https://github.com/RaamPujanggaSadewa/prd-automation.git
@@ -74,16 +73,16 @@ git clone https://github.com/RaamPujanggaSadewa/prd-automation.git
 
 Then:
 
-1. Copy `templates/prd-template.md` into your own project as `PRD.md`.
-2. Fill in `templates/design-brief.md` with your own findings. **Don't skip this** — it's the step that makes the rest work.
-3. Run the prompts in `prompts/` in order, 01 through 06.
+1. Copy `templates/requirement-notes.md` and write it up after your own stakeholder conversation.
+2. Copy `templates/version-context.md` twice — once for the current version of the product, once for the proposed new version — and fill both in alongside your Figma work.
+3. Copy `templates/prd-template.md` into your own project as `PRD.md`, and hand everything to the AI with `prompts/01-generate-prd.md`.
 4. Publish however you like.
 
 If you're using OpenCode too, `templates/opencode.json` and `templates/AGENTS.md` will get you a matching setup in about two minutes — see **[workflow/01-setup-opencode.md](workflow/01-setup-opencode.md)**.
 
-### A word on the boring step
+### A word on the parts with no AI in them
 
-The design brief in step 2 is unglamorous and there's no AI in it. It is also the entire reason this produces something worth reading. A brief with three specific, observed problems will give you a sharper PRD than any amount of prompt engineering on an empty one.
+Steps 2 and 3 have no AI in them at all, and they're most of the work. A stakeholder conversation you actually understood, paired with a context folder that says specifically what changed and why, will give you a sharper PRD than any amount of prompt engineering on thin material.
 
 If you take one thing from this repo, take that.
 
@@ -94,8 +93,8 @@ If you take one thing from this repo, take that.
 ```
 prd-automation/
 ├── workflow/          The five steps, in order
-├── prompts/           Prompt library — 01 to 06, run sequentially
-├── templates/         PRD template, design brief, OpenCode config
+├── prompts/           The prompt — one, used in step 4
+├── templates/         PRD template, requirement notes, version context, OpenCode config
 └── case-study/        The worked example
 ```
 
