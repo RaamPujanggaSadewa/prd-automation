@@ -4,13 +4,26 @@ The PRD is markdown in a git repo, so publishing is mostly a settings toggle. Ab
 
 ---
 
+## Why this actually needs to be in GitHub
+
+Not just why it's convenient — why it matters. At my company, engineering doesn't get the PRD handed to them as a document to read once and set aside. They pull it directly from the repo to build from. Increasingly, that means feeding it straight into an AI coding tool as context for generating the implementation — the PRD isn't only a spec a person reads, it's an input another tool consumes.
+
+I don't know how universal this is elsewhere — every company's process is its own — but it's clearly not just us; AI-assisted engineering workflows that read repo context directly are becoming ordinary rather than novel. Worth assuming your reader might be a tool as well as a person.
+
+Two consequences that follow from this, worth keeping in mind while you're still in [step 04](04-generate-prd.md):
+
+- **Precision matters more than it would in a doc only a human skims.** An acceptance criterion that's slightly vague reads fine to a person who can ask a follow-up question in the hallway. Fed into a code-generation tool with no one to ask, that same vagueness becomes a wrong guess baked into the implementation.
+- **The repo, not the Pages site, is the artifact engineering actually uses.** GitHub Pages (below) is for anyone who wants to read the PRD in a browser — a stakeholder, a reviewer, someone sharing it around. The raw files in the repo are what gets cloned, referenced by commit, or pointed at by a coding tool. Both matter; they're not the same audience.
+
+---
+
 ## Commit and push
 
 If OpenCode has been writing to `PRD.md` throughout, most of this is already committed. Final pass:
 
 ```bash
 git add .
-git commit -m "PRD: final draft after critique pass"
+git commit -m "PRD: final draft, ready for engineering"
 git push
 ```
 
@@ -98,11 +111,13 @@ Build status and errors are under **Actions** in the repo, even with branch depl
 
 ---
 
-## Share it
+## Handing it to engineering
 
-You now have a link that opens to a readable document instead of a file download.
+This is the part that actually matters, separate from anyone reading it for interest. Give engineering the repo, not the Pages link — they need the raw files, not the rendered page. In practice that's: the repo URL, and if it's useful to them, the direct path to `PRD.md` and the `context/` folder alongside it. If their tooling reads repo context directly, having the PRD committed and pushed *is* the handoff — there's no separate step where you export it into whatever they're using.
 
-What I include when I post it:
+## Sharing it more broadly
+
+For anyone reading it for interest rather than building from it — a stakeholder, a reviewer, your own network — the Pages link is what you send:
 
 - **The link, not a PDF.** A URL that opens in one tap gets read; an attachment gets saved for later and never opened.
 - **One specific finding**, not a summary of the process. "Two shelves on this screen look identical and are generated completely differently" starts a conversation. "I used AI to write a PRD" starts nothing.

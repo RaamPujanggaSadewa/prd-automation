@@ -59,7 +59,7 @@ Full detail in **[the workflow](workflow/README.md)**. Steps 3 and 4 aren't stri
 
 **Whatever model I have access to.** In this repo that's Claude Haiku — because it's what my company provides on our OpenCode account, not because it's the strongest model out there. The reasoning in this workflow happens in steps 2 and 3, entirely by hand, before the AI is ever opened. What the model does in step 4 is draft against context that's already been assembled, and a mid-tier model handles that fine. If you're on a different model — including one of OpenCode's free options — see [workflow/01](workflow/01-setup-opencode.md) for the trade-offs.
 
-**GitHub Pages** — the PRD is markdown in a repo, so publishing it as a readable web page is a settings toggle, not a deployment.
+**GitHub** — and this is the part that's easy to miss if you've only seen PRDs live in Notion or Google Docs. At my company, engineering pulls the PRD from GitHub to build from — sometimes literally feeding it into an AI coding tool as context for generating the implementation. The repo isn't a publishing convenience; it's where the document actually needs to live for the next step in the process to work. GitHub Pages on top of that is for people who just want to read it in a browser — the PRD being *in* GitHub is the part that matters to engineering, the Pages site is the part that matters to everyone else. More on this in [workflow/05](workflow/05-publish-to-pages.md).
 
 ---
 

@@ -31,7 +31,9 @@ The prompt is in [`prompts/01-generate-prd.md`](../prompts/01-generate-prd.md) �
 
 ## Review
 
-Read the draft against your own notes, section by section. What to check:
+Read the draft against your own notes, section by section. Read it knowing this goes to engineering next — at my company that often means it's fed directly into a coding tool, not just read by a person who can ask you to clarify. A vague requirement that a person would shrug off becomes a wrong guess if nobody's there to ask. See [step 05](05-publish-to-pages.md) for why that changes what "done" means here.
+
+What to check:
 
 - **Does every requirement trace back to something in `requirement-notes.md` or the current/new context?** If a requirement doesn't map to anything you actually said, it's the model filling a gap on its own — cut it or fix it.
 - **Any number, stat, or claim you didn't supply?** These show up more than you'd expect, and they read exactly like the real content around them. Anything you can't source, remove or flag.
