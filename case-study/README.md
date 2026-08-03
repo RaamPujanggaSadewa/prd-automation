@@ -1,13 +1,13 @@
 # The Case Study
 
-**Status: in progress.** Subject picked, requirement gathering done. Design and PRD generation are the remaining steps.
+**Status: in progress.** Requirement gathering and design are both done. PRD generation is the remaining step.
 
 | | |
 |---|---|
 | **Subject** | [Traveloka](https://www.traveloka.com) — shuttle pickup location, in the bus/shuttle booking flow |
 | **Requirement notes** | [`requirement-notes.md`](requirement-notes.md) — done |
-| **Design & context** | [`context/current/`](context/current/notes.md), [`context/new/`](context/new/notes.md) — pending |
-| **PRD** | Not started — depends on the design step above |
+| **Design & context** | [`context/current/`](context/current/notes.md), [`context/new/`](context/new/notes.md) — done |
+| **PRD** | Not started |
 
 ---
 
@@ -19,11 +19,11 @@ Not a stakeholder conversation — a research insight. A [survey synthesis](http
 
 ---
 
-## What's still needed
+## The design decision
 
-The design and context steps ([workflow/03](../workflow/03-design-and-context.md)) are genuinely pending, not filled in with a placeholder pretending otherwise — see the status notes in [`context/current/notes.md`](context/current/notes.md) and [`context/new/notes.md`](context/new/notes.md). That means real screenshots of Traveloka's current flow, and a real Figma design for the proposed one. Both are design work, which is the part of this workflow that has to be done by hand — the research names a direction, it doesn't design a screen.
+The research's two highest-rated findings — an embedded in-app map, and a one-tap Gojek/Grab shortcut — are both fairly involved to build. The design direction taken here deliberately doesn't attempt either. It ships the two cheaper findings instead: a short address helper added to the search list, and a full address plus an outbound Google Maps link added to the Bus Details screen, which had no location information at all before.
 
-Once those exist, [step 04](../workflow/04-generate-prd.md) runs as documented: hand the AI the context folder and requirement notes, generate against the template, review, refine.
+That's a real MVP trade-off, not a compromise hidden in the fine print — see [`context/new/notes.md`](context/new/notes.md) for exactly what shipped, what was deferred, and why. The PRD needs to carry that trade-off explicitly rather than read as if it fully addresses the research.
 
 ---
 
@@ -34,13 +34,23 @@ case-study/
 ├── README.md                    This page
 ├── requirement-notes.md         Done — the research and what it supports
 ├── context/
-│   ├── current/notes.md          Pending
-│   └── new/notes.md               Pending
+│   ├── current/
+│   │   ├── notes.md               Done
+│   │   └── screens/before.png
+│   └── new/
+│       ├── notes.md               Done
+│       └── screens/after.png
 └── PRD.md                       Not started
 ```
 
 ---
 
+## What's next
+
+[Step 04](../workflow/04-generate-prd.md): hand the AI the context folder and requirement notes, generate against the template, review, refine.
+
+---
+
 ## One note on publishing
 
-An in-progress case study, honestly labeled as such, is a more accurate signal than either an empty placeholder or a PRD generated ahead of the design work it's supposed to be built from. If you're reading this before the design step lands, that's the actual state of the example — not a gap I've papered over.
+An in-progress case study, honestly labeled as such, is a more accurate signal than either an empty placeholder or a PRD generated ahead of the design work it's supposed to be built from.
