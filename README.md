@@ -11,7 +11,7 @@ This repo is three things:
 | | |
 |---|---|
 | **[The workflow](workflow/README.md)** | Five steps, start to finish. What I actually do, in what order. |
-| **[The result](case-study/README.md)** | A worked example, in progress — research and design done, PRD generation still to come. |
+| **[The result](case-study/README.md)** | A worked example, draft PRD generated — still needs the review pass every draft does. |
 | **[The toolkit](prompts/README.md)** | The prompt and templates, ready to fork and use on your own project. |
 
 ---
