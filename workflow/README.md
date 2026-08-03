@@ -5,7 +5,7 @@ Five steps. This is the actual process I use at work, not a generic "AI writes y
 | Step | What happens | AI involved? |
 |---|---|---|
 | **[01 — Setup](01-setup-opencode.md)** | Install OpenCode, pick a model, write the project rules | Setup only |
-| **[02 — Requirement gathering](02-requirement-gathering.md)** | Sit with whoever asked for this — CEO, sales, ops — and get the real context | **No** |
+| **[02 — Requirement gathering](02-requirement-gathering.md)** | Get the real context — a conversation with whoever asked (CEO, sales, ops), or a research insight the data surfaced first | **No** |
 | **[03 — Design & context](03-design-and-context.md)** | Design in Figma; build a folder showing current vs. new, with the reasoning | Only if the design needs a starting point |
 | **[04 — Generate the PRD](04-generate-prd.md)** | Hand the AI the context folder and a template; it drafts, I edit | Yes |
 | **[05 — Publish](05-publish-to-pages.md)** | Commit, push, enable GitHub Pages — this is how engineering gets it, not just how other people read it | No |

@@ -11,7 +11,7 @@ This repo is three things:
 | | |
 |---|---|
 | **[The workflow](workflow/README.md)** | Five steps, start to finish. What I actually do, in what order. |
-| **[The result](case-study/README.md)** | A complete PRD produced by this workflow, published and readable. |
+| **[The result](case-study/README.md)** | A worked example, in progress — research done, design and PRD generation still to come. |
 | **[The toolkit](prompts/README.md)** | The prompt and templates, ready to fork and use on your own project. |
 
 ---
@@ -28,12 +28,12 @@ So the workflow puts the AI at the end, not the start:
 
 | I own | The AI owns |
 |---|---|
-| The stakeholder conversation — what was actually asked for | Drafting from the context I hand it |
+| The evidence — a stakeholder conversation, or a research insight the data surfaced | Drafting from the context I hand it |
 | The design work in Figma | Structuring the PRD against a template |
 | The before/after evidence and why it changed | Turning that evidence into requirements and acceptance criteria |
 | Every judgment call — priority, scope, trade-offs | Catching gaps I missed |
 
-**I bring the conversation and the design. The AI drafts the document around them.** Nothing in the output is a claim I haven't made myself.
+**I bring the evidence and the design. The AI drafts the document around them.** Nothing in the output is a claim I haven't made myself.
 
 ---
 
@@ -42,7 +42,7 @@ So the workflow puts the AI at the end, not the start:
 ```
   1. SETUP        OpenCode CLI + whatever model I actually have access to
         ↓
-  2. REQUIREMENTS  Sit with the stakeholder — CEO, sales, ops — get the real ask  (no AI)
+  2. REQUIREMENTS  A conversation with the stakeholder, or a research insight  (no AI)
         ↓
   3. DESIGN & CONTEXT  Design in Figma, alternating with building a current-vs-new folder
         ↓
